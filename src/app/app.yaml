@@ -5,12 +5,8 @@ api_version: 1
 threadsafe: true
 default_expiration: "10m"
 
-env_variables:
-  DOCRAPTOR_API_KEY: '0y8X324dd5qBvwumhPyo'
-  KEEN_PROJECT_ID: '529c6be036bf5a2ca400000f'
-  KEEN_WRITE_KEY: 'c50c8972a05b470eb6cce925e6a4030f2d0fa4be892d0f24ad3217c14606985b93fc1ad8f2652ab1c4505396c11af8a3852d52effc330d4b4ece89d9f1032739830c52e00735aa57d160b13ec44fccc9d25fe4ed3aa486ca0cac8e122de5b23d9b21d0a1cf549d86879ac11cb500e891'
-  KEEN_READ_KEY: '31b9f8499f6ba114ee571141235ba1a0013e95115328d503e818a0b473ab2acccd4ca160947aa9be97b740904cc1c22f59791da95b14582026a4d97655aedd7e53086f9a559a2267a6858c1559c92091d453c926aee5c9ecee7b1b9940beba6556560c216e1c6a8cdf3398ef02d82d95'
-  BITLY_ACCESS_TOKEN: 'a06148a682320d7042495a2bea1f807d530f53b9'
+# env_variables:
+  # NAME: 'string'
 
 inbound_services:
 - warmup
@@ -20,74 +16,12 @@ builtins:
 - deferred: on
 - appstats: on
 
-libraries:
-- name: markupsafe
-  version: latest
-- name: jinja2
-  version: latest
-- name: webapp2
-  version: latest
-- name: lxml
-  version: latest
-- name: pycrypto
-  version: latest
+# libraries:
+# - name: name
+#   version: latest
 
 handlers:
-- url: /favicon\.ico
-  static_files: static/img/rm-icons/favicon.png
-  upload: static/img/rm-icons/favicon.png
 
 - url: /static
   static_dir: static
   secure: optional
-
-- url: /api.*
-  script: api.main.app
-  secure: always
-
-- url: /admin.*
-  script: admin.main.app
-  secure: always
-  login: admin
-
-- url: /mapreduce(/.*)?
-  script: mapreduce.main.APP
-  login: admin
-
-- url: /mapreduce/pipeline/images
-  static_dir: mapreduce/lib/pipeline/ui/images
-
-- url: /tasks.*
-  script: tasks.main.app
-  secure: always
-  login: admin
-
-# warmup handler just hits welcome page to load all models
-- url: /_ah/warmup
-  script: core.main.app
-  secure: always
-
-# ereporter handler
-- url: /_ereporter.*
-  script: lib.gist_ereporter.main.application
-  login: admin
-
-- url: .*
-  script: core.main.app
-  secure: always
-
-# Maintenance page
-# - url: .*
-#   static_files: templates/maintenance.html
-#   upload: templates/maintenance.html
-
-admin_console:
-  pages:
-  - name: Backend Admin
-    url: /admin
-  - name: User Admin
-    url: /admin/users
-  - name: Spaces Admin
-    url: /admin/spaces
-  - name: Building Admin
-    url: /admin/buildings
