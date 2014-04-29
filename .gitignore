@@ -44,3 +44,4 @@ nosetests.xml
 *.sublime-*
 
 # project related
+src/app/distlib
