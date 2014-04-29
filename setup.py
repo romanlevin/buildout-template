@@ -9,7 +9,6 @@ install_requires = [
 ]
 
 tests_require = [
-    'WebTest == 2.0.7',
     'coverage',
     'nose-cov',
     'mock',
