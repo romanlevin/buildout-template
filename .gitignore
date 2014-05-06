@@ -38,7 +38,7 @@ nosetests.xml
 .pydevproject
 
 
-!.data/.gitkeep
+.data
 
 # Sublime Text files
 *.sublime-*
