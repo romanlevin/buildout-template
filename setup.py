@@ -9,10 +9,8 @@ install_requires = [
 ]
 
 tests_require = [
-    'coverage',
-    'nose-cov',
     'mock',
-    'openstack.nose_plugin',
+    'pytest',
 ]
 
 dependency_links = []
